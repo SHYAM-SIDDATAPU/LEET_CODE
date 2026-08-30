@@ -11,14 +11,9 @@ class Solution {
         for(int i=1;i<=100;i++){
             p[i]=prime(i);
         }
-        int c=0,ip=0,fp=0;
-        for(int i=0;i<nums.length;i++){
-            if(p[nums[i]]){
-                if(c==0) ip=i;
-                fp=i;
-                c++;
-            } 
-        }
+        int ip=0,fp=nums.length-1;
+        while(ip<nums.length && !p[nums[ip]]) ip++;
+        while(fp>=0 && !p[nums[fp]]) fp--;
         return Math.abs(ip-fp);
     }
 }
