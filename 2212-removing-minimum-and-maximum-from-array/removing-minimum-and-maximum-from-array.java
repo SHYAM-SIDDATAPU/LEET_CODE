@@ -9,9 +9,6 @@ class Solution {
         }
         int left=Math.min(l,s);
         int right=Math.max(l,s);
-        int r1= right+1;
-        int r2=n-left;
-        int r3=(left+1)+(n-right);
-        return Math.min(r1,Math.min(r2,r3));
+        return Math.min(right+1,Math.min(n-left,left+1+n-right));
     }
 }
