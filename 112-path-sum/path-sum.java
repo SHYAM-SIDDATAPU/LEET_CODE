@@ -16,24 +16,8 @@
 class Solution {
     public boolean hasPathSum(TreeNode root, int targetSum) {
         if(root==null) return false;
-        Queue<Integer> st= new LinkedList<>();
-        Queue<TreeNode> q= new LinkedList<>();
-        q.offer(root);
-        st.offer(root.val);
-        while(!q.isEmpty()){
-            TreeNode t= q.poll();
-            int s=st.poll();
-            if(t.left==null && t.right==null && s==targetSum) return true;
-
-            if(t.left!=null){
-                q.offer(t.left);
-                st.offer(s+t.left.val);
-            }
-            if(t.right!=null){
-                q.offer(t.right);
-                st.offer(s+t.right.val);
-            }
-        }
-        return false;
+        targetSum-=root.val;
+        if(root.left==null && root.right==null && targetSum==0)  return true;
+        return  hasPathSum(root.left,  targetSum) ||  hasPathSum(root.right,  targetSum);
     }
 }
