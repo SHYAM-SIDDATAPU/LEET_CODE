@@ -5,13 +5,12 @@ class Solution {
             if(i=='(' || i=='['|| i=='{') st.push(i);
             else{
                 if(st.isEmpty()) return false;
-                char c=st.pop();
-                if(i==')' && c!='(') return false;
-                else if(i==']' && c!='[') return false;
-                else if(i=='}' && c!='{') return false;
+                if(i==')' && st.pop()!='(') return false;
+                else if(i==']' && st.pop()!='[') return false;
+                else if(i=='}' && st.pop()!='{') return false;
             }
         }
-        if(!st.isEmpty()) return false;
-        return true;
+       
+        return st.isEmpty();
     }
 }
